@@ -1,0 +1,48 @@
+# Xcode 프로젝트 기본 무시 항목
+
+# 사용자 설정
+*.xcuserstate
+*.xcuserdatad/
+xcuserdata/
+
+# 빌드 결과물
+DerivedData/
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# SwiftPM
+.build/
+Packages/
+Package.pins
+Package.resolved
+.swiftpm/
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/screenshots
+fastlane/test_output
+
+# 아카이브
+*.xcarchive
+
+# 로그 파일
+*.log
+
+# Xcode 자동 생성 파일
+*.orig
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+# MacOs 관련 
+.DS_Store
+
