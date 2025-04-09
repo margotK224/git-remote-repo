@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FoodCollectionViewCell: UICollectionViewCell {
+class FoodCell: UICollectionViewCell {
     
     let imageView: UIImageView = {
             let imageView = UIImageView()

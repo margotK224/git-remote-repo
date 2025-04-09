@@ -7,8 +7,9 @@
 
 import UIKit
 
-class FoodViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+class FoodViewController: UIViewController, UICollectionViewDataSource {
+// UICollectionViewDelegateFlowLayout 프로토콜은 완성 후 사이즈 조절 등 필요할 때 사용할 것
+    
     @IBOutlet weak var foodCollectionView: UICollectionView!
 
     var refrigerator = [FoodItem]()
@@ -31,7 +32,7 @@ class FoodViewController: UIViewController, UICollectionViewDataSource, UICollec
     // 이건 다시 손봐야함 뭐가 이상해...
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "foodCell", for: indexPath) as! FoodCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodCell", for: indexPath) as! FoodCell
         
         switch indexPath.section {
         case 0:
