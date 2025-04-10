@@ -21,10 +21,10 @@ class AddViewController: UIViewController {
     
     @IBAction func save(_ sender: Any) {
         guard let foodName = addFoodTextField.text else { return }
-        //아래 푸드이미지 구현 후 여기 수정해야함. 
+        //아래 푸드이미지 구현 후 여기 수정해야함.
         guard let foodImage = UIImage(systemName: "plus") else { return }
         guard let memo = memoTextField.text else { return }
-        guard let storage = FoodItem.StorageSection(rawValue: storageSegmentedControl.selectedSegmentIndex) else {
+        guard let storage = getSelectedStorageSection() else {
             print("유효하지 않은 저장 위치입니다.")
             return
         }
@@ -44,17 +44,7 @@ class AddViewController: UIViewController {
 //    let storageArray: [String] = ["실온", "냉장", "냉동"]
     
     @IBAction func storageSegmentChanged(_ sender: UISegmentedControl) {
-        let selectedIndex = sender.selectedSegmentIndex
-           
-           // selectedIndex를 기반으로 enum으로 변환
-           if let section = FoodItem.StorageSection(rawValue: selectedIndex) {
-               print("선택된 저장 위치: \(section.storageSctionStr)")
-               
-               // 여기서 FoodItem 객체 생성 등 가능
-               // let item = FoodItem(name: "예시", section: section)
-           } else {
-               print("잘못된 인덱스입니다.")
-           }
+     _ = getSelectedStorageSection()
     }
     
     @IBOutlet weak var dDayLabel: UILabel!
@@ -64,14 +54,22 @@ class AddViewController: UIViewController {
     
     @IBOutlet weak var memoTextField: UITextField!
     
-    
+    func getSelectedStorageSection() -> FoodItem.StorageSection? {
+        let selected = storageSegmentedControl.selectedSegmentIndex
+        guard let section = FoodItem.StorageSection(rawValue: selected) else {
+            print("잘못된 인덱스입니다.")
+            return nil
+        }
+        print("선택된 저장 위치: \(section.storageSctionStr)")
+        return section
+    }
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let item = foodItem {
-                  // 여기서 UI 업데이트
+            
                   print("받은 아이템: \(item)")
                   // 예: imageView.image = item.image
               }
